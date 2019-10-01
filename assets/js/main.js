@@ -50,7 +50,7 @@ App = {
 		*/
 		//App.getLocation();
 		openPdf = cordova.plugins.disusered.open;
-		/*
+		
 		// For Android => Enable background mode
 		cordova.plugins.backgroundMode.enable();
 		cordova.plugins.backgroundMode.setDefaults({
@@ -61,7 +61,7 @@ App = {
 		//cordova.plugins.backgroundMode.configure({
 		//	title:'App toujours en fonction (3 MINUTES MAX), nous vous informons des courses en cours...'
 		//});
-		*/
+		
 		// For iOS => backgroundtask
 		//backgroundtask.start(bgFunctionToRun);
 		// Efficient and batterie saving geolocation...
@@ -204,6 +204,7 @@ App = {
 		if (result.cancelled) { return; }
 		let scanVal = result.text;
 		$('#code_ean').val(scanVal);
+		$('#codeForm').submit();
 		/*
 		if (textFormats.match(result.format)) {                
 			let scanVal = result.text;
@@ -251,21 +252,43 @@ App = {
 		);
 	},
 	
-	subContact: function (myFormDiv) {
+	subCode: function (myFormDiv) {
 		$(myFormDiv+' #sender').attr("disabled", true);
-		var query = $(myFormDiv).serialize();
-		const op = "contact";
+		let query = $(myFormDiv).serialize();
+		const op = "inventory_search";
 		query = query + "&op=" + op;
 		var returns = "";
-		$(myFormDiv+' #successfail').append('<div class="alert alert-success" role="alert"><b>Query : '+query+'</b></div>');
-		$.post(serverAddress, query, function(data){
-			if(data.ok=="ok")
-				returns = '<div class="alert alert-success" role="alert"><b>Votre message a bien été envoyé.</b></div>'
-			else
-				returns = '<div class="alert alert-danger" role="alert"><b>Votre message n\'a pas été envoyé.</b></div>'
+		var myModalId = "#display_scanned_item";
+		//$(myFormDiv+' #successfail').append('<div class="alert alert-success" role="alert"><b>Query : '+query+'</b></div>');
+		$.post(globals.serverAddress, query, function(data){
+			if(data.ok=="ok") {
+				returns = '<div class="alert alert-success" role="alert"><b>Nous avons procédé au traitement de cette référence avec succès.</b></div>';
+				//alert("Nous avons procédé au traitement de vos réponses avec succès.");
+				//json_encode(array("ok"=>$ok, "exist_p"=>$exist_p, "ean_p"=>$code_ean, "auto_p"=>$auto_p, "ref_p"=>$ref_p, "desc_p"=>$desc_p, "provider_p"=>$provider_p, "qty_p"=>$qty_p))
+				if(data.exist_p == 1) {
+					$('#ean_p').val(data.ean_p);
+					$('#auto_p').val(data.auto_p);
+					$('#ref_p').val(data.ref_p);
+					$('#desc_p').val(data.desc_p);
+					$('#provider_p').val(data.provider_p);
+					$('#qty_p').val(data.qty_p);
+				}
+				else {
+					App.clearFormFields('#setItemFormPop');
+					$('#ean_p').val(data.ean_p);
+					$('#auto_p').val(0);
+				}
+				$(myModalId+' #successfail').empty();
+				$(myModalId).modal('show');
+			}
+			else {
+				returns = '<div class="alert alert-danger" role="alert"><b>Nous n\'avons pas pu procédé au traitement de cette référence suite à un problème technique.</b></div>';
+				alert("Nous n'avons pas pu procédé au traitement de cette référence suite à un problème technique.");
+			}
+		}, "json").always(function(data){
 			$(myFormDiv+' #sender').attr("disabled", false);
 			$(myFormDiv+' #successfail').empty().append(returns);
-		}, "json");
+		});
 	},
 	
 	subManagement: function (myFormDiv) {
@@ -274,21 +297,42 @@ App = {
 		const op = "inventory_set";
 		query = query + "&op=" + op;
 		var returns = "";
-		var myModalId = "";
 		//$(myFormDiv+' #successfail').append('<div class="alert alert-success" role="alert"><b>Query : '+query+'</b></div>');
 		$.post(globals.serverAddress, query, function(data){
 			if(data.ok=="ok") {
-				returns = '<div class="alert alert-success" role="alert"><b>Nous avons procédé au traitement de vos réponses avec succès.</b></div>';
-				alert("Nous avons procédé au traitement de vos réponses avec succès.");
+				returns = '<div class="alert alert-success" role="alert"><b>Nous avons procédé au traitement de cet inventaire avec succès.</b></div>';
+				//alert("Nous avons procédé au traitement de cet inventaire avec succès.");
+				const myModalId = "#display_scanned_item";
+				setTimeout(function() {$(myModalId).modal('hide');}, 5000);
+				App.clearFormFields('#codeForm');
+				$('#codeForm #successfail').empty();
 			}
 			else {
-				returns = '<div class="alert alert-danger" role="alert"><b>Nous n\'avons pas pu procédé au traitement de vos réponses suite à un problème technique.</b></div>';
-				alert("Nous n'avons pas pu procédé au traitement de vos réponses suite à un problème technique.");
+				returns = '<div class="alert alert-danger" role="alert"><b>Nous n\'avons pas pu procédé au traitement de cet inventaire, soit rien n\'a changé soit il y a un problème technique.</b></div>';
+				//alert("Nous n'avons pas pu procédé au traitement de cet inventaire suite à un problème technique.");
+				$('#codeForm #successfail').empty();
 			}
 		}, "json").always(function(data){
 			$(myFormDiv+' #sender').attr("disabled", false);
 			$(myFormDiv+' #successfail').empty().append(returns);
 		});
+	},
+	
+	subContact: function (myFormDiv) {
+		$(myFormDiv+' #sender').attr("disabled", true);
+		var query = $(myFormDiv).serialize();
+		const op = "contact";
+		query = query + "&op=" + op;
+		var returns = "";
+		//$(myFormDiv+' #successfail').append('<div class="alert alert-success" role="alert"><b>Query : '+query+'</b></div>');
+		$.post(globals.serverAddress, query, function(data){
+			if(data.ok=="ok")
+				returns = '<div class="alert alert-success" role="alert"><b>Votre message a bien été envoyé.</b></div>'
+			else
+				returns = '<div class="alert alert-danger" role="alert"><b>Votre message n\'a pas été envoyé.</b></div>'
+			$(myFormDiv+' #sender').attr("disabled", false);
+			$(myFormDiv+' #successfail').empty().append(returns);
+		}, "json");
 	},
 	
 	addWasValidatedClass: function (myFormDiv) {

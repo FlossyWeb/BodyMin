@@ -37,7 +37,7 @@
                 <h2>App Inventaire</h2>
                 <p>Cette app vous permet de scanner un produit afin soit de mettre à jour sa quantité en stock directement, soit d'intégrer ce produit au stock.</p><button class="btn btn-outline-light btn-lg" type="button">Débuter</button></div>
         </section>
-        <section id="work" class="clean-block clean-info dark">
+        <section id="work" class="clean-block clean-info dark" style="min-height:60vh">
             <div class="container">
                 <div class="block-heading">
                     <h2 class="text-info">Inventaire</h2>
@@ -61,10 +61,89 @@
 									</div>
 								</div>
 							</div>
+							<div id="successfail"></div>
+							<hr class="d-flex d-md-none">
 						</div>
 					</div>
 				</form>
             </div>
+        </section>
+        <section class="clean-block" id="contact_cont" style="padding: 2em;">
+			<form id="contactForm" action="javascript:App.subContact('#contactForm');" method="get">
+				<!--
+				<div class="form-row">
+					<div class="col-md-12">
+						<div id="successfail"></div>
+					</div>
+				</div>
+				-->
+				<div class="form-row">
+					<div class="col-12 col-md-6" id="message">
+						<h2 class="h4"><i class="fa fa-envelope"></i> Contactez Nous<small><small class="required-input">&nbsp;(*requis)</small></small></h2>
+						<div class="form-group"><label for="from_name">Nom Prénom</label><span class="required-input">*</span>
+							<div class="input-group">
+								<div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-user-o"></i></span></div>
+								<input class="form-control" type="text" name="from_name" required="" placeholder="Nom Prénom" id="from_name">
+							</div>
+						</div>
+						<div class="form-group"><label for="from_email">Email</label><span class="required-input">*</span>
+							<div class="input-group">
+								<div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-envelope-o"></i></span></div><input class="form-control" type="email" name="from_email" required="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}$" placeholder="Adresse Email" id="from_email"></div>
+						</div>
+						<div class="form-row">
+							<div class="col-12 col-sm-12 col-md-12 col-lg-6">
+								<div class="form-group"><label for="from_phone">Téléphone</label><span class="required-input">*</span>
+									<div class="input-group">
+										<div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-phone"></i></span></div><input class="form-control" type="text" name="from_phone" required="" placeholder="Mobile ou fixe" id="from_phone"></div>
+								</div>
+							</div>
+							<div class="col-12 col-sm-12 col-md-12 col-lg-6">
+								<div class="form-group"><label for="calltime">Rappel ?</label>
+									<div class="input-group">
+										<div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-clock-o"></i></span></div><select class="form-control" name="calltime" id="calltime"><optgroup label="De préférence le"><option value="Matin" selected="">Matin</option><option value="Aprés-Midi">Aprés-Midi</option><option value="Soirée">Soirée</option></optgroup></select></div>
+								</div>
+							</div>
+						</div>
+						<div class="form-group"><label for="comments">Commentaires</label><textarea class="form-control" rows="5" name="comments" placeholder="Votre message ici..." id="comments"></textarea></div>
+						<div class="form-group">
+							<div class="form-row">
+								<!-- <div class="col"><button class="btn btn-primary btn-block" type="reset"><i class="fa fa-undo"></i> Annuler</button></div> -->
+								<div class="col"><button class="btn btn-primary btn-block" id="sender" onclick="App.addWasValidatedClass('#contactFormPop')" type="submit">Envoyer <i class="fa fa-paper-plane"></i></button></div>
+							</div>
+						</div>
+						<div id="successfail"></div>
+						<hr class="d-flex d-md-none">
+					</div>
+					<div class="col-12 col-md-6">
+						<h2 class="h4"><i class="fa fa-location-arrow"></i> Où sommes-nous</h2>
+						<div class="form-row">
+							<div class="col-12">
+								<div class="static-map">
+									<a href="https://goo.gl/maps/rZZF92NLquX1G1XcA" target="_blank">
+										<img class="img-responsive" width="100%" src="assets/img/staticmap.jpg" alt="Google Map">
+									</a>
+								</div>
+							</div>
+							<div class="col-sm-6 col-md-12 col-lg-6">
+								<h2 class="h4"><i class="fa fa-user"></i> Infos Contact</h2>
+								<div><span><strong>SNS SOLUTIONS</strong></span></div>
+								<div><span>marseille@snsolutions.fr</span></div>
+								<div><span>www.snsolutions.fr</span></div>
+								<hr class="d-sm-none d-md-block d-lg-none">
+							</div>
+							<div class="col-sm-6 col-md-12 col-lg-6">
+								<h2 class="h4"><i class="fa fa-location-arrow"></i> Notre Adresse</h2>
+								<div><span><strong>SNS SOLUTIONS</strong></span></div>
+								<div><span>Espace Valentine, Bâtiment B</span></div>
+								<div><span>Montée de Saint Menet</span></div>
+								<div><span>13011 Marseille, France</span></div>
+								<div><abbr data-toggle="tooltip" data-placement="top" title="Standard: 04 91 03 04 35">Tel:</abbr><a href="tel:+33491030435"> 04 91 03 04 35</a></div>
+								<hr class="d-sm-none">
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
         </section>
 		<!--
         <section class="clean-block clean-info dark">
@@ -170,6 +249,67 @@
         </section>
 		-->
     </main>
+	<div class="modal fade" role="dialog" tabindex="-1" id="display_scanned_item">
+		<div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title"> Fiche Produit</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				</div>
+				<div class="modal-body">
+					<form id="setItemFormPop" action="javascript:App.subManagement('#setItemFormPop');" method="get">
+						<!--
+						json_encode(array("ok"=>$ok, "exist_p"=>$exist_p, "ean_p"=>$code_ean, "auto_p"=>$auto_p, "ref_p"=>$ref_p, "desc_p"=>$desc_p, "provider_p"=>$provider_p, "qty_p"=>$qty_p))
+						-->
+						<input type="hidden" name="auto_p" id="auto_p" value="0">
+						<div class="form-row">
+							<div class="col-12" id="itemDetails">
+								<div class="form-group"><label for="ean_p">Code EAN</label><span class="required-input">*</span>
+									<div class="input-group">
+										<div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-barcode"></i></span></div>
+										<input class="form-control" type="text" name="ean_p" required="" placeholder="Code EAN" id="ean_p">
+									</div>
+								</div>
+								<div class="form-group"><label for="ref_p">Référence</label><span class="required-input">*</span>
+									<div class="input-group">
+										<div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-ticket"></i></span></div>
+										<input class="form-control" type="text" name="ref_p" required="" placeholder="Référence" id="ref_p">
+									</div>
+								</div>
+								<div class="form-group"><label for="desc_p">Désignation</label><span class="required-input">*</span>
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="fa fa-file-text-o"></i></span>
+										</div>
+										<input class="form-control" type="text" name="desc_p" required="" placeholder="Désignation" id="desc_p">
+									</div>
+								</div>
+								<div class="form-group"><label for="provider_p">Fournisseur</label><span class="required-input">*</span>
+									<div class="input-group">
+										<div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-copyright"></i></span></div>
+										<input class="form-control" type="text" name="provider_p" required="" placeholder="Fournisseur" id="provider_p">
+									</div>
+								</div>
+								<div class="form-group"><label for="qty_p">Quantité</label><span class="required-input">*</span>
+									<div class="input-group">
+										<div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-calculator"></i></span></div>
+										<input class="form-control" type="number" name="qty_p" required="" placeholder="Quantité" id="qty_p">
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="form-row">
+										<!-- <div class="col"><button class="btn btn-primary btn-block" type="reset"><i class="fa fa-undo"></i> Annuler</button></div> -->
+										<div class="col"><button class="btn btn-primary btn-block" id="sender" onclick="App.addWasValidatedClass('#contactFormPop')" type="submit">Envoyer <i class="fa fa-paper-plane"></i></button></div>
+									</div>
+								</div>
+								<div id="successfail"></div>
+								<hr class="d-flex d-md-none">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 	<div class="modal fade" role="dialog" tabindex="-1" id="modal_contact">
 		<div class="modal-dialog modal-xl modal-dialog-centered" role="document">
 			<div class="modal-content">

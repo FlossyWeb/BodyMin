@@ -51,3 +51,6 @@ a.go-up-fixed:hover {
 		width: 68%;
 	}
 }
+.required-input {
+	color: red;
+}
