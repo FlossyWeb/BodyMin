@@ -1,0 +1,53 @@
+footer, section {
+	box-shadow: 0 0 16px rgba(0,0,0,0.6);
+}
+.modal {
+	z-index: 10050;
+}
+.rounded {
+	-moz-border-radius: 6px;
+	border-radius: 6px;	
+}
+.rounded16 {
+	-moz-border-radius: 16px;
+	border-radius: 16px;
+}
+.shadow {
+	box-shadow: 0 0 6px #000;
+	-moz-box-shadow: 0 0 6px #000;
+	-webkit-box-shadow: 0 0 6px #000;
+}
+.cursor {
+	cursor: pointer;
+}
+.navbar {
+  z-index: 9999;
+  position: fixed;
+  width: 100%;
+  opacity: 0.9;
+}
+a.go-up-fixed {
+	display: none;
+	position: fixed;
+	bottom: 0px;
+	right: 0px;
+	border:none;
+	border-radius:50%;
+	margin:4px;
+	color:#fff;
+	text-align:center;
+	background-color:#007bff;
+	opacity:0.8;
+}
+a.go-up-fixed:hover {
+	opacity:1;
+}
+.my-logo {
+	width: 48%;
+	max-width: 1338px;
+}
+@media (max-width:768px) {
+	.my-logo {
+		width: 68%;
+	}
+}

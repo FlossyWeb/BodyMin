@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - BodyMinute</title>
+    <meta name="description" content="App qui permet de réaliser l'inventaire du stock">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="stylesheet" href="assets/fonts/simple-line-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+    <link rel="stylesheet" href="assets/css/smoothproducts.css">
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+        <div class="container"><a class="navbar-brand logo" href="#">Body'Minute</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse"
+                id="navcol-1">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="#home">Accueil</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#work">Inventaire</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="modal" href="#modal_contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main class="page landing-page">
+        <section id="home" class="clean-block clean-hero" style="background-image:url('assets/img/bg-home.jpg');color:rgba(9, 162, 255, 0.85);">
+            <div class="text wow fadeInDown">
+				<img class="img-responsive my-logo wow fadeInDown" src="assets/img/logo.png" alt="Body'Minute"/>
+				<hr>
+                <h2>App Inventaire</h2>
+                <p>Cette app vous permet de scanner un produit afin soit de mettre à jour sa quantité en stock directement, soit d'intégrer ce produit au stock.</p><button class="btn btn-outline-light btn-lg" type="button">Débuter</button></div>
+        </section>
+        <section class="clean-block clean-info dark">
+            <div class="container">
+                <div class="block-heading">
+                    <h2 class="text-info">Inventaire</h2>
+                    <p>Scannez ou renseignez un code dans le champs ci-dessous.</p>
+                </div>
+				<form id="codeForm" action="javascript:App.subCode('#codeForm');" method="get">
+					<div class="form-row">
+						<div class="col-12" id="getCode">
+							<div class="form-group">
+								<!-- <label for="code_ean">Code EAN</label><span class="required-input">*</span> -->
+								<div class="input-group input-group-lg">
+									<div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-barcode"></i></span></div>
+									<input class="form-control" type="text" name="code_ean" required="" placeholder="Code EAN" id="code_ean">
+									<div class="input-group-append"><button class="btn btn-info" onclick="App.goScan()" type="button">Scan <i class="fa fa-camera"></i></button></div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="form-row">
+									<div class="col">
+										<button class="btn btn-lg btn-info btn-block" id="sender" onclick="App.addWasValidatedClass('#codeForm')" type="submit">Envoyer <i class="fa fa-paper-plane"></i></button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+            </div>
+        </section>
+		<!--
+        <section class="clean-block clean-info dark">
+            <div class="container">
+                <div class="block-heading">
+                    <h2 class="text-info">Inventaire</h2>
+                    <p>Scannez ou renseigner un code dans le champs ci-dessous.</p>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-md-6"><img class="img-thumbnail" src="assets/img/scenery/image5.jpg"></div>
+                    <div class="col-md-6">
+                        <h3>Lorem impsum dolor sit amet</h3>
+                        <div class="getting-started-info">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        </div><button class="btn btn-outline-primary btn-lg" type="button">Join Now</button></div>
+                </div>
+            </div>
+        </section>
+        <section class="clean-block features">
+            <div class="container">
+                <div class="block-heading">
+                    <h2 class="text-info">Features</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-5 feature-box"><i class="icon-star icon"></i>
+                        <h4>Bootstrap 4</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
+                    </div>
+                    <div class="col-md-5 feature-box"><i class="icon-pencil icon"></i>
+                        <h4>Customizable</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
+                    </div>
+                    <div class="col-md-5 feature-box"><i class="icon-screen-smartphone icon"></i>
+                        <h4>Responsive</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
+                    </div>
+                    <div class="col-md-5 feature-box"><i class="icon-refresh icon"></i>
+                        <h4>All Browser Compatibility</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="clean-block slider dark">
+            <div class="container">
+                <div class="block-heading">
+                    <h2 class="text-info">Slider</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
+                </div>
+                <div class="carousel slide" data-ride="carousel" id="carousel-1">
+                    <div class="carousel-inner" role="listbox">
+                        <div class="carousel-item active"><img class="w-100 d-block" src="assets/img/scenery/image1.jpg" alt="Slide Image"></div>
+                        <div class="carousel-item"><img class="w-100 d-block" src="assets/img/scenery/image4.jpg" alt="Slide Image"></div>
+                        <div class="carousel-item"><img class="w-100 d-block" src="assets/img/scenery/image6.jpg" alt="Slide Image"></div>
+                    </div>
+                    <div><a class="carousel-control-prev" href="#carousel-1" role="button" data-slide="prev"><span class="carousel-control-prev-icon"></span><span class="sr-only">Previous</span></a><a class="carousel-control-next" href="#carousel-1" role="button"
+                            data-slide="next"><span class="carousel-control-next-icon"></span><span class="sr-only">Next</span></a></div>
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-1" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-1" data-slide-to="1"></li>
+                        <li data-target="#carousel-1" data-slide-to="2"></li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+        <section class="clean-block about-us">
+            <div class="container">
+                <div class="block-heading">
+                    <h2 class="text-info">About Us</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="assets/img/avatars/avatar1.jpg">
+                            <div class="card-body info">
+                                <h4 class="card-title">John Smith</h4>
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                <div class="icons"><a href="#"><i class="icon-social-facebook"></i></a><a href="#"><i class="icon-social-instagram"></i></a><a href="#"><i class="icon-social-twitter"></i></a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="assets/img/avatars/avatar2.jpg">
+                            <div class="card-body info">
+                                <h4 class="card-title">Robert Downturn</h4>
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                <div class="icons"><a href="#"><i class="icon-social-facebook"></i></a><a href="#"><i class="icon-social-instagram"></i></a><a href="#"><i class="icon-social-twitter"></i></a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="assets/img/avatars/avatar3.jpg">
+                            <div class="card-body info">
+                                <h4 class="card-title">Ally Sanders</h4>
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                <div class="icons"><a href="#"><i class="icon-social-facebook"></i></a><a href="#"><i class="icon-social-instagram"></i></a><a href="#"><i class="icon-social-twitter"></i></a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+		-->
+    </main>
+	<div class="modal fade" role="dialog" tabindex="-1" id="modal_contact">
+		<div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title"> Contactez Nous</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+				<div class="modal-body">
+					<form id="contactFormPop" action="javascript:App.subContact('#contactFormPop');" method="get">
+						<!--
+						<div class="form-row">
+							<div class="col-md-12">
+								<div id="successfail"></div>
+							</div>
+						</div>
+						-->
+						<div class="form-row">
+							<div class="col-12 col-md-6" id="message">
+								<h2 class="h4"><i class="fa fa-envelope"></i> Contactez Nous<small><small class="required-input">&nbsp;(*requis)</small></small></h2>
+								<div class="form-group"><label for="from_name">Nom Prénom</label><span class="required-input">*</span>
+									<div class="input-group">
+										<div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-user-o"></i></span></div>
+										<input class="form-control" type="text" name="from_name" required="" placeholder="Nom Prénom" id="from_name">
+									</div>
+								</div>
+								<div class="form-group"><label for="from_email">Email</label><span class="required-input">*</span>
+									<div class="input-group">
+										<div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-envelope-o"></i></span></div><input class="form-control" type="email" name="from_email" required="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}$" placeholder="Adresse Email" id="from_email"></div>
+								</div>
+								<div class="form-row">
+									<div class="col-12 col-sm-12 col-md-12 col-lg-6">
+										<div class="form-group"><label for="from_phone">Téléphone</label><span class="required-input">*</span>
+											<div class="input-group">
+												<div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-phone"></i></span></div><input class="form-control" type="text" name="from_phone" required="" placeholder="Mobile ou fixe" id="from_phone"></div>
+										</div>
+									</div>
+									<div class="col-12 col-sm-12 col-md-12 col-lg-6">
+										<div class="form-group"><label for="calltime">Rappel ?</label>
+											<div class="input-group">
+												<div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-clock-o"></i></span></div><select class="form-control" name="calltime" id="calltime"><optgroup label="De préférence le"><option value="Matin" selected="">Matin</option><option value="Aprés-Midi">Aprés-Midi</option><option value="Soirée">Soirée</option></optgroup></select></div>
+										</div>
+									</div>
+								</div>
+								<div class="form-group"><label for="comments">Commentaires</label><textarea class="form-control" rows="5" name="comments" placeholder="Votre message ici..." id="comments"></textarea></div>
+								<div class="form-group">
+									<div class="form-row">
+										<!-- <div class="col"><button class="btn btn-primary btn-block" type="reset"><i class="fa fa-undo"></i> Annuler</button></div> -->
+										<div class="col"><button class="btn btn-primary btn-block" id="sender" onclick="App.addWasValidatedClass('#contactFormPop')" type="submit">Envoyer <i class="fa fa-paper-plane"></i></button></div>
+									</div>
+								</div>
+								<div id="successfail"></div>
+								<hr class="d-flex d-md-none">
+							</div>
+							<div class="col-12 col-md-6">
+								<h2 class="h4"><i class="fa fa-location-arrow"></i> Où sommes-nous</h2>
+								<div class="form-row">
+									<div class="col-12">
+										<div class="static-map">
+											<a href="https://goo.gl/maps/rZZF92NLquX1G1XcA" target="_blank">
+												<img class="img-responsive" width="100%" src="assets/img/staticmap.jpg" alt="Google Map">
+											</a>
+										</div>
+									</div>
+									<div class="col-sm-6 col-md-12 col-lg-6">
+										<h2 class="h4"><i class="fa fa-user"></i> Infos Contact</h2>
+										<div><span><strong>SNS SOLUTIONS</strong></span></div>
+										<div><span>marseille@snsolutions.fr</span></div>
+										<div><span>www.snsolutions.fr</span></div>
+										<hr class="d-sm-none d-md-block d-lg-none">
+									</div>
+									<div class="col-sm-6 col-md-12 col-lg-6">
+										<h2 class="h4"><i class="fa fa-location-arrow"></i> Notre Adresse</h2>
+										<div><span><strong>SNS SOLUTIONS</strong></span></div>
+										<div><span>Espace Valentine, Bâtiment B</span></div>
+										<div><span>Montée de Saint Menet</span></div>
+										<div><span>13011 Marseille, France</span></div>
+										<div><abbr data-toggle="tooltip" data-placement="top" title="Standard: 04 91 03 04 35">Tel:</abbr><a href="tel:+33491030435"> 04 91 03 04 35</a></div>
+										<hr class="d-sm-none">
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+	<a href="#" class="go-up-fixed" title="Aller en haut"><i class="fa fa-arrow-up fa-2x fa-fw"></i></a>
+    <footer class="page-footer dark">
+		<!--
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <h5>Get started</h5>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Sign up</a></li>
+                        <li><a href="#">Downloads</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <h5>About us</h5>
+                    <ul>
+                        <li><a href="#">Company Information</a></li>
+                        <li><a href="#">Contact us</a></li>
+                        <li><a href="#">Reviews</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <h5>Support</h5>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Help desk</a></li>
+                        <li><a href="#">Forums</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <h5>Legal</h5>
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Terms of Use</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+		-->
+        <div class="footer-copyright">
+            <p>© <span id="now-date"></span> Body'Minute</p>
+        </div>
+    </footer>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script src="assets/js/smoothproducts.min.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/smooth.scroll.anchor.js"></script>
+    <script src="assets/js/jquery.html5storage.min.js"></script>
+    <script src="phonegap.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
