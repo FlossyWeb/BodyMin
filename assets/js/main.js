@@ -53,7 +53,7 @@ App = {
 		
 		// For iOS => backgroundtask
 		//backgroundtask.start(bgFunctionToRun);
-		
+		/*
 		// For Android And Apple Enterprise apps => Enable background mode
 		cordova.plugins.backgroundMode.enable();
 		cordova.plugins.backgroundMode.setDefaults({
@@ -61,10 +61,7 @@ App = {
 			ticker: 'App toujours en fonction',
 			text:   'Vous pouvez faire autre chose et revenir quand vous voulez...'
 		});
-		//cordova.plugins.backgroundMode.configure({
-		//	title:'App toujours en fonction (3 MINUTES MAX), nous vous informons des courses en cours...'
-		//});
-		
+		*/
 		// Efficient and batterie saving geolocation...
 		/* USING Plugin V3.X */
 		// BackgroundGeolocation is highly configurable. See platform specific configuration options 
