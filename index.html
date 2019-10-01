@@ -37,11 +37,11 @@
                 <h2>App Inventaire</h2>
                 <p>Cette app vous permet de scanner un produit afin soit de mettre à jour sa quantité en stock directement, soit d'intégrer ce produit au stock.</p><button class="btn btn-outline-light btn-lg" type="button">Débuter</button></div>
         </section>
-        <section class="clean-block clean-info dark">
+        <section id="work" class="clean-block clean-info dark">
             <div class="container">
                 <div class="block-heading">
                     <h2 class="text-info">Inventaire</h2>
-                    <p>Scannez ou renseignez un code dans le champs ci-dessous.</p>
+                    <p>Scannez (bouton <i class="fa fa-camera"></i>) ou renseignez un code dans le champs ci-dessous.</p>
                 </div>
 				<form id="codeForm" action="javascript:App.subCode('#codeForm');" method="get">
 					<div class="form-row">
@@ -51,7 +51,7 @@
 								<div class="input-group input-group-lg">
 									<div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-barcode"></i></span></div>
 									<input class="form-control" type="text" name="code_ean" required="" placeholder="Code EAN" id="code_ean">
-									<div class="input-group-append"><button class="btn btn-info" onclick="App.goScan()" type="button">Scan <i class="fa fa-camera"></i></button></div>
+									<div class="input-group-append"><button class="btn btn-info" onclick="App.goScan()" type="button"><i class="fa fa-camera"></i></button></div>
 								</div>
 							</div>
 							<div class="form-group">

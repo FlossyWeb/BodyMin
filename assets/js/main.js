@@ -236,10 +236,10 @@ App = {
 	
 	goScan : function () {
 		const options = {
-			"preferFrontCamera" : true, // iOS and Android
+			"preferFrontCamera" : false, // iOS and Android
 			"showFlipCameraButton" : true, // iOS and Android
 			//"formats" : "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED
-			//"orientation" : "landscape" // Android only (portrait|landscape), default unset so it rotates with the device
+			//"orientation" : "landscape", // Android only (portrait|landscape), default unset so it rotates with the device
 			"prompt" : "Placer le code barre dans la zone de scan" // supported on Android only
 		}
 		cordova.plugins.barcodeScanner.scan(
