@@ -202,10 +202,12 @@ App = {
 		var textFormats = "QR_CODE DATA_MATRIX";
 		var productFormats = "UPC_E UPC_A EAN_8 EAN_13";
 		if (result.cancelled) { return; }
+		let scanVal = result.text;
+		$('#code_ean').val(scanVal);
+		/*
 		if (textFormats.match(result.format)) {                
 			let scanVal = result.text;
 			$('#code_ean').val(scanVal);
-			/*
 			if (scanVal.indexOf("http") === 0) {
 				setTimeout(function() { 
 					//window.plugins.childBrowser.showWebPage(result.text, { showLocationBar: true }); 
@@ -219,19 +221,17 @@ App = {
 						'OK'
 					);
 			}
-			*/
 		} else if (productFormats.match(result.format)) {
 			let scanVal = result.text;
 			$('#code_ean').val(scanVal);
-			/*
-			var searchUrl = "https://www.google.fr/#q=" + result.text;
-			setTimeout(function() { window.open(searchUrl,'_blank','location=yes,enableViewportScale=yes,closebuttoncaption=Fermer'); }, 500);
-			*/
+			//var searchUrl = "https://www.google.fr/#q=" + result.text;
+			//setTimeout(function() { window.open(searchUrl,'_blank','location=yes,enableViewportScale=yes,closebuttoncaption=Fermer'); }, 500);
 		} else { 
 			let scanVal = result.text;
 			$('#code_ean').val(scanVal);
 			//navigator.notification.alert("Format du scan: " + result.format + " NON SUPPORTE. Valeur du scan: " + result.text, alertDismissed, 'Inventaire BodyMinute Erreur', 'OK');
 		}
+		*/
 	},
 	
 	goScan : function () {

@@ -9,10 +9,10 @@
         FRANCOIS-REGIS SIMON
     </author>
 
-	<name>LaCentrale.Taxi</name>
+	<name>Body'Minute Inventaire</name>
 
 	<description>
-	   Réalisez votre activité de Taxi simplement via votre mobile avec l'application LCT.
+	   App qui permet de réaliser l'inventaire du stock.
 	</description>
 
 	<content src="index.html" />
